@@ -313,8 +313,68 @@ void MyPrimitive::GenerateTorus(float a_fOuterRadius, float a_fInnerRadius, int 
 	//3--2
 	//|  |
 	//0--1
-	
+	float fTubeRadius = a_fOuterRadius - a_fInnerRadius;
+	float fRefRadius = fTubeRadius + a_fInnerRadius;
 
+	//create reference points for loop subdivisions
+	//std::vector<vector3> refPoint;
+	std::vector<vector3> point;
+	float theta = 0;
+	float theta2 = 0;
+	float steps = 2 * PI / static_cast<float>(a_nSubdivisionsA);
+	float steps2 = 2 * PI / static_cast<float>(a_nSubdivisionsB);
+
+	//populate points
+	for (int i = 0; i < a_nSubdivisionsA; i++)
+	{
+		for (int j = 0; j < a_nSubdivisionsB; j++)
+		{
+			point.push_back(vector3(cos(theta) * (fRefRadius + fTubeRadius * cos(theta2)), sin(theta) * (fRefRadius + fTubeRadius * cos(theta2)), fTubeRadius * sin(theta2)));
+			theta2 += steps2; //thank you to http://paulbourke.net/geometry/torus/ for math equation for torus
+		}
+
+		theta += steps;
+	}
+
+	//connect the rings
+	for (int i = 0; i < a_nSubdivisionsA - 1; i++)
+	{
+		for (int j = 0; j < a_nSubdivisionsB - 1; j++)
+		{
+			AddQuad(point[(i * a_nSubdivisionsB) + j], point[((i + 1) * a_nSubdivisionsB) + j], point[(i * a_nSubdivisionsB) + j + 1], point[((i + 1) * a_nSubdivisionsB) + j + 1]);
+		}
+
+		//fill in gaps
+		AddQuad(point[(i * a_nSubdivisionsB) + 5], point[((i + 1) * a_nSubdivisionsB) + 5], point[(i * a_nSubdivisionsB)], point[((i + 1) * a_nSubdivisionsB)]);
+	}
+
+	//fill in more gaps
+	for (int i = 0; i < a_nSubdivisionsB - 1; i++)
+	{
+		AddQuad(point[((a_nSubdivisionsA - 1) * a_nSubdivisionsB) + i], point[i], point[((a_nSubdivisionsA - 1) * a_nSubdivisionsB) + i + 1], point[i + 1]);
+	}
+
+	AddQuad(point[((a_nSubdivisionsA - 1) * a_nSubdivisionsB) + 5], point[5], point[((a_nSubdivisionsA - 1) * a_nSubdivisionsB)], point[0]);
+
+	/*
+	for (int i = 0; i < a_nSubdivisionsA; i++)
+	{
+		refPoint.push_back(vector3(fRefRadius * cos(theta), 0, fRefRadius * sin(theta)));
+		theta += steps;
+	}
+
+	for (int j = 0; j < refPoint.size(); j++)
+	{
+		theta2 = 0;
+		for (int i = 0; i < a_nSubdivisionsB; i++)
+		{
+			point.push_back(vector3(refPoint[j].x, , ));
+			theta2 += steps2;
+		}
+	}
+	*/
+
+	//debug
 
 	//Your code ends here
 	CompileObject(a_v3Color);
