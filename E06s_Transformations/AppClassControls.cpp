@@ -72,22 +72,4 @@ void AppClass::ProcessMouse(void)
 	
 	if(sf::Mouse::isButtonPressed(sf::Mouse::Button::Right))
 		m_bFPC = true;
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && !sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(0.5f, 0.0f, 0.0f));
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y) && !sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(0.0f, 0.5f, 0.0f));
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && !sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(0.0f, 0.0f, 0.5f));
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::X) && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(-0.5f, 0.0f, 0.0f));
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Y) && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(0.0f, -0.5f, 0.0f));
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && sf::Keyboard::isKeyPressed(sf::Keyboard::LShift))
-		m_m4Sun = glm::translate(m_m4Sun, vector3(0.0f, 0.0f, -0.5f));
 }
