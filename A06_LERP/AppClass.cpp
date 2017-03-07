@@ -14,6 +14,8 @@ void AppClass::InitVariables(void)
 	m_pMeshMngr->LoadModel("Sorted\\WallEye.bto", "WallEye");
 
 	fDuration = 1.0f;
+	nIndex = 0;
+	m_m4Walleye = glm::translate(vector3(-4.0f, -2.0f, 5.0f));
 }
 
 void AppClass::Update(void)
@@ -36,7 +38,51 @@ void AppClass::Update(void)
 #pragma endregion
 
 #pragma region Your Code goes here
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "WallEye");
+	m_pMeshMngr->SetModelMatrix(m_m4Walleye, "WallEye");
+
+	float fTimer = 0.0f;
+	static DWORD timerSinceBoot = GetTickCount();
+	DWORD timerSinceStart = GetTickCount() - timerSinceBoot;
+	fTimer = timerSinceStart / 1000.0f;
+	float percent = fmod(fTimer, fDuration) / fDuration;
+
+	std::vector<vector3> points;
+	points.push_back(vector3(-4.0f, -2.0f, 5.0f));
+	points.push_back(vector3(1.0f, -2.0f, 5.0f));
+	points.push_back(vector3(-3.0f, -1.0f, 3.0f));
+	points.push_back(vector3(2.0f, -1.0f, 3.0f));
+	points.push_back(vector3(-2.0f, 0.0f, 0.0f));
+	points.push_back(vector3(3.0f, 0.0f, 0.0f));
+	points.push_back(vector3(-1.0f, 1.0f, -3.0f));
+	points.push_back(vector3(4.0f, 1.0f, -3.0f));
+	points.push_back(vector3(0.0f, 2.0f, -5.0f));
+	points.push_back(vector3(5.0f, 2.0f, -5.0f));
+	points.push_back(vector3(1.0f, 3.0f, -5.0f));
+
+	for (int i = 0; i < points.size(); i++)
+	{
+		m_pMeshMngr->AddSphereToRenderList(glm::translate(points[i]) * glm::scale(vector3(0.1)), RERED, SOLID);
+	}
+
+	if (fmod(fTimer, fDuration) == 0)
+	{
+		nIndex++;
+		if (nIndex == points.size())
+		{
+			nIndex = 0;
+		}
+	}
+
+	//glm::lerp(v3Start, v3End, fPercent)
+	if (nIndex != points.size() - 1)
+	{
+		m_m4Walleye = glm::translate(glm::lerp(points[nIndex], points[nIndex + 1], percent));
+	}
+
+	else
+	{
+		m_m4Walleye = glm::translate(glm::lerp(points[nIndex], points[0], percent));
+	}
 #pragma endregion
 
 #pragma region Does not need changes but feel free to change anything here
@@ -51,6 +97,9 @@ void AppClass::Update(void)
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->Print(std::to_string(nFPS), RERED);
+
+	m_pMeshMngr->PrintLine(std::to_string(fTimer));
+	fTimer += 0.016;
 #pragma endregion
 }
 
