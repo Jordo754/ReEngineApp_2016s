@@ -50,10 +50,20 @@ void AppClass::Update(void)
 
 #pragma region YOUR CODE GOES HERE
 	//Calculate the position of the Earth
-	m_m4Earth = glm::rotate(IDENTITY_M4, m_fEarthTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Earth = m_m4Sun;
+	m_m4Earth *= rotateX;
+	m_m4Earth = glm::rotate(m_m4Earth, m_fEarthTimer, vector3(0.0f, 0.0f, 1.0f));
+	m_m4Earth *= distanceEarth;
+	m_m4Earth = glm::rotate(m_m4Earth, 360.0f * m_fEarthTimer, vector3(0.0f, 0.0f, 1.0f));
 
 	//Calculate the position of the Moon
-	m_m4Moon = glm::rotate(IDENTITY_M4, m_fMoonTimer, vector3(0.0f, 1.0f, 0.0f));
+	m_m4Moon = m_m4Sun;
+	m_m4Moon *= rotateX;
+	m_m4Moon = glm::rotate(m_m4Moon, m_fEarthTimer, vector3(0.0f, 0.0f, 1.0f));
+	m_m4Moon *= distanceEarth;
+	m_m4Moon = glm::translate(m_m4Moon, vector3(2 * cos(m_fEarthTimer / 5.0f), 2 * sin(m_fEarthTimer / 5.0f), 0));
+	m_m4Moon = glm::rotate(m_m4Moon, 360 * (fmod(m_fEarthTimer, 28.0f)), vector3(0.0f, 0.0f, 1.0f));
+	//
 #pragma endregion
 
 #pragma region Print info
@@ -87,7 +97,7 @@ void AppClass::Display(void)
 	m_pMoon->Render(m_pCameraMngr->GetProjectionMatrix(), m_pCameraMngr->GetViewMatrix(), m_m4Moon);
 	
 	//Render the grid based on the camera's mode:
-	m_pMeshMngr->AddGridToRenderListBasedOnCamera(m_pCameraMngr->GetCameraMode());
+	//m_pMeshMngr->AddGridToRenderListBasedOnCamera(m_pCameraMngr->GetCameraMode());
 	m_pMeshMngr->Render(); //renders the render list
 	m_pMeshMngr->ClearRenderList(); //Reset the Render list after render
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
