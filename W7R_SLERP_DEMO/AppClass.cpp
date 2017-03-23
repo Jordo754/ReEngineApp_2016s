@@ -1,6 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
+<<<<<<< HEAD
 	super::InitWindow("Sandbox"); // Window Name
 
 	// Set the clear color based on Microsoft's CornflowerBlue (default in XNA)
@@ -10,19 +11,29 @@ void AppClass::InitWindow(String a_sWindowName)
 	m_pSystem->SetWindowResolution(RESOLUTIONS::C_1280x720_16x9_HD);
 	//m_pSystem->SetWindowFullscreen(); //Sets the window to be fullscreen
 	//m_pSystem->SetWindowBorderless(true); //Sets the window to not have borders
+=======
+	super::InitWindow("W7R_SLERP_DEMO"); // Window Name
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
 }
 
 void AppClass::InitVariables(void)
 {
+<<<<<<< HEAD
 	//Reset the selection to -1, -1
 	m_selection = std::pair<int, int>(-1, -1);
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
 	//Set the camera position
 	m_pCameraMngr->SetPositionTargetAndView(
 		vector3(0.0f, 2.5f, 15.0f),//Camera position
 		vector3(0.0f, 2.5f, 0.0f),//What Im looking at
 		REAXISY);//What is up
 	//Load a model onto the Mesh manager
+<<<<<<< HEAD
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
+=======
+	m_pMeshMngr->LoadModel("Minecraft\\Cow.obj", "Cow");
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
 }
 
 void AppClass::Update(void)
@@ -43,6 +54,7 @@ void AppClass::Update(void)
 	//Set the model matrix for the first model to be the arcball
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(m_qArcBall), 0);
 
+<<<<<<< HEAD
 	static float fTimer = 0.0f;
 	fTimer += m_pSystem->LapClock();
 	float fDuration = 5.0f;
@@ -53,6 +65,23 @@ void AppClass::Update(void)
 	quaternion q3 = glm::mix(q1, q2, fPercentage);
 
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(q3), "Unikitty");
+=======
+	//Create the quaternions to interpolate
+	glm::quat q1 = glm::angleAxis(0.0f, vector3(0.0f, 0.0f, 1.0f));
+	quaternion q2 = glm::angleAxis(359.0f, vector3(0.0f, 0.0f, 1.0f)); //if 360 there is a div by 0 somewhere
+	quaternion q3;
+	
+	static float fTimer = 0.0f; //static timer to keep track
+	static int clockIndex = m_pSystem->GenClock();//generate a new clock in the system
+	fTimer += m_pSystem->LapClock(clockIndex);//get the delta time of that clock
+
+	float fCycleTime = 5.0f;// time the animation will take to perform
+	float fPercentage = MapValue(fTimer, 0.0f, fCycleTime, 0.0f, 1.0f); //map the value in a percentage scale
+
+	q3 = glm::mix(q1, q2, fPercentage); //slerp the quaternions
+	
+	m_pMeshMngr->SetModelMatrix(ToMatrix4(q3), "Cow");//transform the quaternion to a matrix and assign it to the model
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
 	
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddSkyboxToRenderList();
@@ -63,10 +92,18 @@ void AppClass::Update(void)
 	//print info into the console
 	//printf("FPS: %d            \r", nFPS);//print the Frames per Second
 	//Print info on the screen
+<<<<<<< HEAD
 	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
 
 	m_pMeshMngr->Print("Selection: ");
 	m_pMeshMngr->PrintLine(m_pMeshMngr->GetInstanceGroupName(m_selection.first, m_selection.second), REYELLOW);
+=======
+	m_pMeshMngr->PrintLine("");
+	m_pMeshMngr->PrintLine(m_pSystem->GetAppName(), REYELLOW);
+
+	m_pMeshMngr->Print("Timer: ");
+	m_pMeshMngr->PrintLine(std::to_string(fTimer), REYELLOW);
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
 	
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->Print(std::to_string(nFPS), RERED);

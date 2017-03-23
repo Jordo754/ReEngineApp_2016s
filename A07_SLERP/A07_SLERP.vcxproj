@@ -11,13 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-<<<<<<< HEAD
-    <ProjectGuid>{F465FA03-47A0-4053-9877-E19885230B43}</ProjectGuid>
-=======
-    <ProjectGuid>{F586EF79-529C-4737-B8BD-79C899828529}</ProjectGuid>
->>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
-    <RootNamespace>W7R_SLERP_DEMO</RootNamespace>
-    <ProjectName>W7R_SLERP_DEMO</ProjectName>
+    <ProjectGuid>{EF817BA9-17FE-44E0-B405-C5962E93B613}</ProjectGuid>
+    <RootNamespace>A07_SLERP</RootNamespace>
+    <ProjectName>A07_SLERP</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -109,16 +105,16 @@ xcopy "$(SolutionDir)include\RE\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Com
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AppClass.cpp" />
-    <ClCompile Include="AppClassControls.cpp" />
-    <ClCompile Include="Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\res\Resource.h" />
     <ClInclude Include="AppClass.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\res\BTO.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AppClass.cpp" />
+    <ClCompile Include="AppClassControls.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
