@@ -13,6 +13,10 @@ using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 class AppClass : public ReEngAppClass
 {
 	matrix4 modelMatrix;
+	vector3 start = vector3(0, 0, 0);
+	vector3 end = vector3(0, 3, 0);
+	quaternion startQuat = quaternion(vector3(0.0f, 0.0f, 0.0f));
+	quaternion endQuat = quaternion(vector3(0.0f, 0.0f, 360.f));
 
 public:
 	typedef ReEngAppClass super;
