@@ -11,17 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-<<<<<<< HEAD
-    <ProjectGuid>{F465FA03-47A0-4053-9877-E19885230B43}</ProjectGuid>
-=======
-    <ProjectGuid>{F586EF79-529C-4737-B8BD-79C899828529}</ProjectGuid>
-<<<<<<< HEAD
->>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
-=======
->>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
->>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
-    <RootNamespace>W7R_SLERP_DEMO</RootNamespace>
-    <ProjectName>W7R_SLERP_DEMO</ProjectName>
+    <ProjectGuid>{D66A441D-BEF2-4171-B138-E9061EDF9CCC}</ProjectGuid>
+    <RootNamespace>A08_Camera_Class</RootNamespace>
+    <ProjectName>A08_Camera_Class</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,11 +107,13 @@ xcopy "$(SolutionDir)include\RE\Shaders" "$(SolutionDir)_Binary\Shaders" /y</Com
   <ItemGroup>
     <ClCompile Include="AppClass.cpp" />
     <ClCompile Include="AppClassControls.cpp" />
+    <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\res\Resource.h" />
     <ClInclude Include="AppClass.h" />
+    <ClInclude Include="CameraManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\res\BTO.rc" />

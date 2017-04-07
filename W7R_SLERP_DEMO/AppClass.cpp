@@ -13,7 +13,11 @@ void AppClass::InitWindow(String a_sWindowName)
 	//m_pSystem->SetWindowBorderless(true); //Sets the window to not have borders
 =======
 	super::InitWindow("W7R_SLERP_DEMO"); // Window Name
+<<<<<<< HEAD
 >>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
+>>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
 }
 
 void AppClass::InitVariables(void)
@@ -22,7 +26,11 @@ void AppClass::InitVariables(void)
 	//Reset the selection to -1, -1
 	m_selection = std::pair<int, int>(-1, -1);
 =======
+<<<<<<< HEAD
 >>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
+>>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
 	//Set the camera position
 	m_pCameraMngr->SetPositionTargetAndView(
 		vector3(0.0f, 2.5f, 15.0f),//Camera position
@@ -33,7 +41,11 @@ void AppClass::InitVariables(void)
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
 =======
 	m_pMeshMngr->LoadModel("Minecraft\\Cow.obj", "Cow");
+<<<<<<< HEAD
 >>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
+>>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
 }
 
 void AppClass::Update(void)
@@ -81,7 +93,11 @@ void AppClass::Update(void)
 	q3 = glm::mix(q1, q2, fPercentage); //slerp the quaternions
 	
 	m_pMeshMngr->SetModelMatrix(ToMatrix4(q3), "Cow");//transform the quaternion to a matrix and assign it to the model
+<<<<<<< HEAD
 >>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
+>>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
 	
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddSkyboxToRenderList();
@@ -103,7 +119,11 @@ void AppClass::Update(void)
 
 	m_pMeshMngr->Print("Timer: ");
 	m_pMeshMngr->PrintLine(std::to_string(fTimer), REYELLOW);
+<<<<<<< HEAD
 >>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
+=======
+>>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
+>>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
 	
 	m_pMeshMngr->Print("FPS:");
 	m_pMeshMngr->Print(std::to_string(nFPS), RERED);

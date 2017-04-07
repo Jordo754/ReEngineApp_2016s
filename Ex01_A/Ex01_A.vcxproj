@@ -11,17 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-<<<<<<< HEAD
-    <ProjectGuid>{F465FA03-47A0-4053-9877-E19885230B43}</ProjectGuid>
-=======
-    <ProjectGuid>{F586EF79-529C-4737-B8BD-79C899828529}</ProjectGuid>
-<<<<<<< HEAD
->>>>>>> 1f0255ccf433290ba131bbf9af961a9c4ddf110f
-=======
->>>>>>> d5b2223fd6ca24b95c3a20b3621f3644606d7093
->>>>>>> 1841ff349f26c4d02d2ed86ad76903613ed91e74
-    <RootNamespace>W7R_SLERP_DEMO</RootNamespace>
-    <ProjectName>W7R_SLERP_DEMO</ProjectName>
+    <ProjectGuid>{C8CC8011-40C5-40B9-857B-7897DBBF2BDC}</ProjectGuid>
+    <RootNamespace>Ex01_A</RootNamespace>
+    <ProjectName>Ex01_A</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
