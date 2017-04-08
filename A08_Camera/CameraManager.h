@@ -5,19 +5,28 @@
 
 using namespace ReEng; //Using ReEng namespace to use all the classes in the dll
 
-class CameraManager : public ReEngAppClass
+class CameraManager
 {
 private:
 	matrix4 m4View;
 	matrix4 m4Projection;
-	
+
 	vector3 m_v3Position;
 	vector3 m_v3Target;
 	vector3 m_v3Up;
+
+	float fYaw;
+	float fPitch;
+	float fRoll;
+
 	vector3 m_v3Front;
+	vector3 m_v3Right;
 
 public:
 	//methods
+	CameraManager();
+	CameraManager(vector3 a_v3Position, vector3 a_v3Target, vector3 a_v3Up);
+
 	//should get the view matrix
 	matrix4 GetView();
 

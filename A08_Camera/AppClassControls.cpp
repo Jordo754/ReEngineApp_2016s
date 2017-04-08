@@ -25,22 +25,40 @@ void AppClass::ProcessKeyboard(void)
 	if(bModifier)
 		fSpeed *= 10.0f;
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-		m_pCameraMngr->MoveForward(fSpeed);
+		camera.MoveForward(fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-		m_pCameraMngr->MoveForward(-fSpeed);
+		camera.MoveForward(-fSpeed);
 	
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-		m_pCameraMngr->MoveSideways(-fSpeed);
+		camera.MoveSideways(-fSpeed);
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-		m_pCameraMngr->MoveSideways(fSpeed);
+		camera.MoveSideways(fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Q))
-		m_pCameraMngr->MoveVertical(-fSpeed);
+		camera.MoveVertical(-fSpeed);
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
-		m_pCameraMngr->MoveVertical(fSpeed);
+		camera.MoveVertical(fSpeed);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+			camera.ChangePitch(-fSpeed * 5);
+		else
+			camera.ChangePitch(fSpeed * 5);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+			camera.ChangeYaw(-fSpeed * 5);
+		else
+			camera.ChangeYaw(fSpeed * 5);
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::V))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::LControl))
+			camera.ChangeRoll(-fSpeed * 5);
+		else
+			camera.ChangeRoll(fSpeed * 5);
 #pragma endregion
 
 #pragma region Other Actions

@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{D66A441D-BEF2-4171-B138-E9061EDF9CCC}</ProjectGuid>
-    <RootNamespace>A08_Camera_Class</RootNamespace>
-    <ProjectName>A08_Camera_Class</ProjectName>
+    <ProjectGuid>{C66EFFF7-0709-48D6-91D6-9622C694D2A6}</ProjectGuid>
+    <RootNamespace>A08_Camera</RootNamespace>
+    <ProjectName>A08_Camera</ProjectName>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

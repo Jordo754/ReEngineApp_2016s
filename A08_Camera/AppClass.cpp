@@ -17,12 +17,16 @@ void AppClass::InitVariables(void)
 	//Reset the selection to -1, -1
 	m_selection = std::pair<int, int>(-1, -1);
 	//Set the camera position
+	/*
 	m_pCameraMngr->SetPositionTargetAndView(
 		vector3(0.0f, 2.5f, 15.0f),//Camera position
-		vector3(0.0f, 2.5f, 0.0f),//What Im looking at
-		REAXISY);//What is up
+		vector3(0.0f, 2.5f, 0.0f),//What Im looki
+		*/
+	camera = CameraManager();
 	//Load a model onto the Mesh manager
 	m_pMeshMngr->LoadModel("Lego\\Unikitty.bto", "Unikitty");
+	m_pCone = new PrimitiveClass();
+	m_pCone->GenerateCone(0.5f, 0.5f, 10, REGREEN);
 }
 
 void AppClass::Update(void)
@@ -65,14 +69,17 @@ void AppClass::Display(void)
 {
 	//clear the screen
 	ClearScreen();
+
+	m_pCone->Render(camera.GetProjection(false), camera.GetView(), IDENTITY_M4);
+
 	//Render the grid based on the camera's mode:
-	//m_pMeshMngr->AddGridToRenderListBasedOnCamera(m_pCameraMngr->GetCameraMode());
-	m_pMeshMngr->Render(); //renders the render list
+	//m_pMeshMngr->Render(); //renders the render list
 	m_pMeshMngr->ClearRenderList(); //Reset the Render list after render
 	m_pGLSystem->GLSwapBuffers(); //Swaps the OpenGL buffers
 }
 
 void AppClass::Release(void)
 {
+	SafeDelete(m_pCone);
 	super::Release(); //release the memory of the inherited fields
 }

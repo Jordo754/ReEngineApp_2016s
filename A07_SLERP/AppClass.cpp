@@ -1,7 +1,7 @@
 #include "AppClass.h"
 void AppClass::InitWindow(String a_sWindowName)
 {
-	super::InitWindow("SLERP - YOUR USER NAME GOES HERE"); // Window Name
+	super::InitWindow("SLERP - JORDAN MATO"); // Window Name
 
 	//Setting the color to black
 	m_v4ClearColor = vector4(0.0f);
@@ -47,10 +47,14 @@ void AppClass::Update(void)
 	float fEarthHalfRevTime = 0.5f * m_fDay; // Move for Half a day
 	float fMoonHalfOrbTime = 14.0f * m_fDay; //Moon's orbit is 28 earth days, so half the time for half a route
 
+	m_m4Sun = IDENTITY_M4 * glm::scale(vector3(5.936, 5.936, 5.936));
+	m_m4Earth = IDENTITY_M4 * glm::translate(vector3(11, 0, 0)) * glm::scale(vector3(0.524, 0.524, 0.524));
+	m_m4Moon = glm::translate(m_m4Earth, vector3(2, 0, 0)) * glm::scale(vector3(0.27, 0.27, 0.27));
+
 	//Setting the matrices
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Sun");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Earth");
-	m_pMeshMngr->SetModelMatrix(IDENTITY_M4, "Moon");
+	m_pMeshMngr->SetModelMatrix(m_m4Sun, "Sun");
+	m_pMeshMngr->SetModelMatrix(m_m4Earth, "Earth");
+	m_pMeshMngr->SetModelMatrix(m_m4Moon, "Moon");
 
 	//Adds all loaded instance to the render list
 	m_pMeshMngr->AddInstanceToRenderList("ALL");
